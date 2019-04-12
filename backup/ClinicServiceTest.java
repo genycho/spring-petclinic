@@ -83,14 +83,15 @@ public class ClinicServiceTest extends AbstractPetStoreTestCase{
     @Test
     @Transactional
     public void testSaveOwner_기본()  throws Exception {
-	    //0.테스트용 데이터 세팅
-	    String testLastName = "";
+        //0.테스트용 데이터 세팅
+        String testLastName = "last";
         Owner testOwner = new Owner();
         testOwner.setLastName(testLastName);
         //TODO  testOwner.set....
+        testOwner.setFirstName("first");
 
         //1.등록 전 건수 조회
-        Collection<Owner> prevOwnerResults = this.clinicService.findOwnerByLastName("");
+        Collection<Owner> prevOwnerResults = this.clinicService.findOwnerByLastName(testLastName);
         int found = prevOwnerResults.size();
 
         //2.등록 수행
@@ -98,6 +99,8 @@ public class ClinicServiceTest extends AbstractPetStoreTestCase{
 
         //3.등록 후 건수 조회
         //TODO  검증 구문 작성
+        Collection<Owner> afterOwnerResults = this.clinicService.findOwnerByLastName(testLastName);
+        assertEquals(found+1, afterOwnerResults.size());
 
     }
 

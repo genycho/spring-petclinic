@@ -73,7 +73,7 @@ public class ClinicServiceTest extends AbstractPetStoreTestCase{
         //this.clinicService.saveOwner(testOwner);
 
         //4. Owner 정보를 재조회하여 size+1 확인 등 검증
-        testOwner = this.clinicService.findOwnerById(6);
+        testOwner = this.clinicService.findOwnerById(testOwnerId);
         assertEquals(found+1, testOwner.getPets().size());
         // checks that id has been generated
 //        assertNotNull(newPet.getId());
